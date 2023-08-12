@@ -1,0 +1,129 @@
+@import "reset.css";
+
+.monitoring-mode {
+  top: 111px;
+  left: 0px;
+  width: 20vw;
+  height: 635px;
+  opacity: 1;
+  background: rgb(255, 255, 255) 0% 0% no-repeat padding-box;
+  box-sizing: border-box;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.monitoring-mode div {
+  width: 18vw;
+}
+
+.monitoring-mode div select {
+  width: 100%;
+}
+.monitoring-mode div input {
+    width: 98.5%;
+}
+
+.monitoring-mode .searchveh {
+  margin-right: auto;
+}
+
+.replay-mode {
+  top: 111px;
+  left: 0px;
+  width: 325px;
+  height: 635px;
+  opacity: 1;
+  background: rgb(255, 255, 255) 0% 0% no-repeat padding-box;
+  box-sizing: border-box;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.searchveh {
+  /* Layout Properties */
+  top: 137px;
+  left: 20px;
+  width: auto;
+  height: 25px;
+  /* UI Properties */
+  text-align: left;
+  font: normal normal bold 20px/25px Spoqa Han Sans Neo;
+  letter-spacing: -0.4px;
+  color: #292929;
+  opacity: 1;
+  padding-left: 20px;
+}
+
+.vnum {
+  width: 279.67px;
+  height: 43.67px;
+  border: 1px solid #999;
+  font-family: inherit;
+  border-radius: 10px;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#search-carNum {
+  padding-top: 8px;
+}
+.box2426 {
+  /* Layout Properties */
+  /* top: 295px; */
+  top: 0;
+  left: 20px;
+  width: 285px;
+  height: 33px;
+  /* UI Properties */
+  background: #f5f5f5 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: sticky;
+}
+
+.box3894 {
+  /* Layout Properties */
+  top: 336px;
+  left: 20px;
+  width: 285px;
+  height: 400px;
+  /* UI Properties */
+  opacity: 1;
+  overflow-y: auto;
+  font-size: 15px;
+  border: 1px solid #999;
+}
+
+.box3894 table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+input[type="submit"] {
+  width: 285px;
+  height: 47px;
+  padding: 10px;
+  border: 1px solid #999;
+  background-color: #5f55e3c7;
+  font-family: inherit;
+  border-radius: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: white;
+}
+
+.emptysearch {
+  width: 280px;
+  min-height: 20px;
+  background-color: #ffffff;
+  color: #fff;
+  display: block;
+}

@@ -1,0 +1,144 @@
+@import "reset.css";
+
+.shape {
+    /* Layout Properties */
+    top: 746px;
+    left: 0px;
+    width: 100vw;
+    height: 334px;
+    border: #292929;
+    border-radius: 4px;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.group5829 {
+    /* Layout Properties */
+    top: 752px;
+    left: 20px;
+    width: 100vw;
+    height: 317px;
+    /* UI Properties */
+    opacity: 1;
+}
+
+.submitform{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.trip {
+    /* 트립조회 */
+    top: 776px;
+    left: 20px;
+    width: 90px;
+    height: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    text-align: left;
+    font: normal normal bold 20px/25px Spoqa Han Sans Neo;
+    letter-spacing: -0.4px;
+    color: #292929;
+    opacity: 1;
+    display: inline-block;
+}
+
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+input[type="date"]::-webkit-inner-spin-button { 
+    display: none;
+}
+
+/* Always display the drop down caret */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #2c3e50;
+}
+
+/* A few custom styles for date inputs */
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #95a5a6;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 18px;
+    border:1px solid #ecf0f1;
+    background:#ecf0f1;
+    padding:5px;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+input[type="date"], focus {
+    color: #95a5a6;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.emptytrip{
+    width: 1400px;
+    min-height:45px;
+    background-color:#ffffff;
+    color:#FFF;
+    display:inline-block;
+    padding:10px;
+}
+
+.line546 {
+    top: 823px;
+    left: 20px;
+    width: 100vw;
+    height: 0px;
+    border: 2px solid #7E84A3;
+    opacity: 0.3;
+}
+
+.group5827 {
+    /* table container */
+    top: 823px;
+    left: 20px;
+    width: 100vw;
+    height: 247px;
+    opacity: 1;
+    /* display: block; */
+    font: normal normal medium 14px/18px Spoqa Han Sans Neo;
+    letter-spacing: -0.28px;
+    color: #292929;
+    overflow-y: auto;
+    border-bottom: 2px solid #bfc5e0;
+}
+
+.group5827 table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.box2429 {
+    /* thead */
+    /* top: 823px; */
+    top: 0;
+    left: 20px;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    opacity: 1;
+    display: table-header-group;
+    position: sticky;
+}
+
+td,
+th {
+    height: 20px;
+    border-bottom: 2px solid #bfc5e0;
+    text-align: center;
+    padding: 10px;
+    display: table-cell;
+}
+
+.group5827 th {
+    min-width: 10px;
+}
