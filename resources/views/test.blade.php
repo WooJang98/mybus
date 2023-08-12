@@ -1,19 +1,64 @@
-<h1> 자 이것이 백엔드 팀의 힘이다</h1>  
-<h2>client 테이블이다</h2> 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MS SQL Data</title>
+</head>
+<body>
+    <h1>php와 mssql 연동</h1>
+<h2>car_id 확인 중입니다...</h2>
 
-<ul> 
+<ul>
 <?php
-foreach ($clients as $client) {
-    echo "<li>";
-    $decodedClient = json_decode('"' . $client->client_name . '"');
-    echo $decodedClient;
-    echo "</li>";
-}
+    foreach ($car_id as $ci) {
+        echo "<li>";
+        echo $ci;
+        echo "</li>";
+    }
+    
+?>
 
-    //  foreach ($clients as $client) {
-    //      echo "<li>";
-    //      //echo $client->BIN . " - " . $client->client_name;
-    //      echo $client;
-    //      echo "</li>";
-    //  }
-     ?>
+<h2>vrn 확인 중입니다...</h2>
+
+<ul>
+<?php
+    foreach ($VRN as $v) {
+        echo "<li>";
+        echo $v;
+        echo "</li>";
+    }
+    
+?>
+
+<h2>car_status 확인 중입니다...</h2>
+
+<ul>
+<?php
+    foreach ($car_status as $c) {
+        echo "<li>";
+        echo $c;
+        echo "</li>";
+    }
+    
+?>
+
+<h2>driver_code 확인 중입니다...</h2>
+<ul>
+<?php
+    foreach ($driver_code as $dc) {
+        echo "<li>";
+        echo $dc;
+        echo "</li>";
+    }
+    
+?>
+
+<h2>driver_name 확인 중입니다...</h2>
+<ul>
+<?php
+    foreach ($driver_name as $d) {
+        echo "<li>";
+        echo $d;
+        echo "</li>";
+    }
+    
+?>
