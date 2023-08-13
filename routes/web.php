@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\CarSelectController;
 
 /*
@@ -18,6 +19,6 @@ use App\Http\Controllers\CarSelectController;
     return view('test');
 });*/
 
-//Route::get('/', [MainController::class, 'MainController']);
+Route::get('/', [MainController::class, 'MainController']);
 Route::get('/test',[CarSelectController::class, 'car_select'])
 ?>

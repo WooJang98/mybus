@@ -37,7 +37,7 @@ class CarSelectController extends MainController
         $driver_name = driver::select('driver_name')->
         whereIn('driver_code',$driver_code)->pluck('driver_name');
         
-        return view('test', ['car_id' => $car_id, 'VRN' => $VRN, 'car_status' => $car_status, 'driver_code' => $driver_code,  'driver_name' => $driver_name]);
+        return ['car_id' => $car_id, 'VRN' => $VRN, 'car_status' => $car_status, 'driver_code' => $driver_code,  'driver_name' => $driver_name];
     }
 }
 ?>
