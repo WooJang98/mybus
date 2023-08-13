@@ -6,16 +6,6 @@ use App\Models\car;
 use App\Models\schedule;
 use App\Models\driver;
 
-// function get_driver_code(){
-//     $driver_code = schedule::select('driver_code')
-//         ->where('trip_date', '=', get_date())
-//         ->pluck('driver_code');
-
-//     return $driver_code;
-// }
-
-
-
 class CarSelectController extends MainController
 {
 

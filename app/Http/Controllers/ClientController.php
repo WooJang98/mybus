@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Controllers\MainController;
 use App\Models\client;
 
 class ClientController extends MainController
