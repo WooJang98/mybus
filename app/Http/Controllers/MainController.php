@@ -10,8 +10,12 @@ class MainController extends BaseController
 
 {
     public function MainController(){
-        $carSelcetController = new CarSelectController();
-        $selectedCar = $carSelcetController->car_select();
+
+        $clientController = new ClientController();
+        $clients = $clientController->get_client();
+
+        $carSelectController = new CarSelectController();
+        $selectedCar = $carSelectController->car_select();
 
         $car_id = $selectedCar['car_id'];
         $VRN = $selectedCar['VRN'];
@@ -19,7 +23,7 @@ class MainController extends BaseController
         $driver_code = $selectedCar['driver_code'];
         $driver_name = $selectedCar['driver_name'];
 
-        return view('test',['car_id' => $car_id, 'VRN' => $VRN, 'car_status' => $car_status, 'driver_code' => $driver_code,  'driver_name' => $driver_name]);
+        return view('mybus',['clients' => $clients, 'car_id' => $car_id, 'VRN' => $VRN, 'car_status' => $car_status, 'driver_code' => $driver_code,  'driver_name' => $driver_name]);
     }
     //use AuthorizesRequests, ValidatesRequests;
 }
