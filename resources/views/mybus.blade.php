@@ -17,7 +17,7 @@
 
 <body>
     <div class="header">
-        <img src="img/MYBUS.png" width="114" height="21" style="top: 20px; left:22px;    position: absolute;">
+        <img src="pictures/MYBUS.png" width="114" height="21" style="top: 20px; left:22px;    position: absolute;">
     </div>
 
     <!-- Tab links -->
@@ -398,7 +398,7 @@
 
                 <input type="date" name="todate" required="required">
 
-                <input type="image" src="img/download.png" alt="Submit" height="25">
+                <input type="image" src="pictures/download.png" alt="Submit" height="25">
 
                 <div class="emptytrip"></div>
             </form>
