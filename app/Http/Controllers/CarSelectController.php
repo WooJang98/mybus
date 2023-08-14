@@ -30,8 +30,6 @@ class CarSelectController extends MainController
         whereIn('driver_code',$driver_code)->pluck('driver_name');
         
         return ['car_id' => $car_id, 'VRN' => $VRN, 'car_status' => $car_status, 'driver_name' => $driver_name];
-        
-
     }
 }
 ?>

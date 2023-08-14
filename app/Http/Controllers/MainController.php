@@ -16,18 +16,14 @@ class MainController extends BaseController
 
         $carSelectController = new CarSelectController();
         $selectedCar = $carSelectController->car_select();
-        
-        $car_list = [
-            'car_id' => $selectedCar['car_id'],
-            'VRN' => $selectedCar['VRN'],
-            'car_status' => $selectedCar['car_status'],
-            'driver_name' => $selectedCar['driver_name'],
-        ];
-        
+
+        $tripController = new TripController();
+        $trip_list = $tripController->trip_select();
 
         return view('mybus', [
             'clients' => $clients, 
-            'car_list' => $car_list,
+            'cars' => $selectedCar,
+            'trips' => $trip_list,
         ]);
     }
     //use AuthorizesRequests, ValidatesRequests;

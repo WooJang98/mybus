@@ -25,7 +25,7 @@ class TripController extends MainController
 
         $tripArray = json_decode(json_encode($trip), true);
 
-        return view('triptest',['trip' => $tripArray]);    
+        return $tripArray;
     }
 }
 ?>
