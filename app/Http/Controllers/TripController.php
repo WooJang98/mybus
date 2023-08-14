@@ -18,11 +18,14 @@ class TripController extends MainController
         $end_datetime = $end_date . ' 23:59:59';
         
         $trip = trip::where('car_id', 1) // 이 부분은 프론트에서 ajax로 변수 받아오기
-            ->whereBetween('departure_time', [$start_datetime, $end_datetime])
-            ->select('departure_time', 'arrival_time', 'driver_code', 'dtg_status', 'driving_time', 'driving_distance', 'speed_max', 'speed_avg', 'rpm_max', 'rpm_avg', 'volt_min', 'volt_max', 'overspeed_time', 'accumulated_distance')
-            ->get();
-            
-        return ['trip' => $trip];
+        ->whereBetween('departure_time', [$start_datetime, $end_datetime])
+        ->join('driver', 'trip.driver_code', '=', 'driver.driver_code') // 조인
+        ->select('departure_time', 'arrival_time', 'driver.driver_name', 'dtg_status', 'driving_time', 'driving_distance', 'speed_max', 'speed_avg', 'rpm_max', 'rpm_avg', 'volt_min', 'volt_max', 'overspeed_time', 'accumulated_distance')
+        ->get();
+
+        $tripArray = json_decode(json_encode($trip), true);
+
+        return view('triptest',['trip' => $tripArray]);    
     }
 }
 ?>
