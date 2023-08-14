@@ -78,81 +78,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Good</td>
-                            <td>강원 123가1234</td>
-                            <td>노민식</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>경기 123가1234</td>
-                            <td>정원영</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>충남 123가1234</td>
-                            <td>김홍식</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>강원 123가1234</td>
-                            <td>노민식</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>경기 123가1234</td>
-                            <td>정원영</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>충남 123가1234</td>
-                            <td>김홍식</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>강원 123가1234</td>
-                            <td>노민식</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>경기 123가1234</td>
-                            <td>정원영</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>충남 123가1234</td>
-                            <td>김홍식</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>강원 123가1234</td>
-                            <td>노민식</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>경기 123가1234</td>
-                            <td>정원영</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>충남 123가1234</td>
-                            <td>김홍식</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>강원 123가1234</td>
-                            <td>노민식</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>경기 123가1234</td>
-                            <td>정원영</td>
-                        </tr>
-                        <tr>
-                            <td>Good</td>
-                            <td>충남 123가1234</td>
-                            <td>김홍식</td>
-                        </tr>
+                    <?php
+                    foreach ($cars['car_id'] as $index=>$car_id) {
+                        echo "<tr onclick='alert(\"Clicked on row: $car_id\")'>";
+                            echo"<td>" . ($cars['car_status'][$index] == true ? 'Good' : 'Bad') . "</td>";
+                            echo"<td>" . $cars['VRN'][$index] . "</td>";
+                            echo"<td>" . $cars['driver_name'][$index] . "</td>";
+                        echo "</tr>";
+                    }
+                    ?>
                     </tbody>
                     <tfoot>
 
