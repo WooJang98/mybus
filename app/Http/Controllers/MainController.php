@@ -16,14 +16,19 @@ class MainController extends BaseController
 
         $carSelectController = new CarSelectController();
         $selectedCar = $carSelectController->car_select();
+        
+        $car_list = [
+            'car_id' => $selectedCar['car_id'],
+            'VRN' => $selectedCar['VRN'],
+            'car_status' => $selectedCar['car_status'],
+            'driver_name' => $selectedCar['driver_name'],
+        ];
+        
 
-        $car_id = $selectedCar['car_id'];
-        $VRN = $selectedCar['VRN'];
-        $car_status = $selectedCar['car_status'];
-        $driver_code = $selectedCar['driver_code'];
-        $driver_name = $selectedCar['driver_name'];
-
-        return view('mybus',['clients' => $clients, 'car_id' => $car_id, 'VRN' => $VRN, 'car_status' => $car_status, 'driver_code' => $driver_code,  'driver_name' => $driver_name]);
+        return view('mybus', [
+            'clients' => $clients, 
+            'car_list' => $car_list,
+        ]);
     }
     //use AuthorizesRequests, ValidatesRequests;
 }
