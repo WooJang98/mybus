@@ -38,5 +38,4 @@ class CarSelectController extends MainController
         
         return ['car_id' => $car_id, 'VRN' => $VRN, 'car_status' => $car_status, 'driver_name' => $driver_name];
     }
-}
-?>
+}?>
