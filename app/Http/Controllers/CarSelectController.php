@@ -6,28 +6,35 @@ use App\Models\car;
 use App\Models\schedule;
 use App\Models\driver;
 
-
-
 class CarSelectController extends MainController
 {
-    public function car_select()
+    public function car_select(Request $request) // $request는 ajax로 사용자의 입력값을 받아옴.
     {
         $d = date('N'); 
         $DayOfWeek = $d % 7 + 1; // 일요일이 1로 시작되는 요일
 
-        $request = 9876543210; // 이 부분은 프론트에서 ajax로 변수 받아오기
-        $search = "67"; // 이 부분은 프론트에서 ajax로 변수 받아오기
+        $query = car::where('VRN', 'like', '%' . $search . '%');
+        
+        if (is_numeric($request->input('request'))) {
+            $query->where('BIN', $request->input('request'));
+        } elseif ($request->input('request') === "default") {
+            // No additional filtering needed for 'BIN' column when 'default' is selected
+        }
+        
+        $result = $query->select('car_id', 'car_status', 'VRN')->get();
 
-        $car_id = car::select('car_id')->where('BIN',$request)->where('VRN', 'like', '%' . $search . '%')->pluck('car_id');
-        $car_status = car::select('car_status')->where('BIN',$request)->where('VRN', 'like', '%' . $search . '%')->pluck('car_status');
-        $VRN = car::select('VRN')->where('BIN',$request)->where('VRN', 'like', '%' . $search . '%')->pluck('VRN');
+        $car_id = $result->pluck('car_id');
+        $car_status = $result->pluck('car_status');
+        $VRN = $result->pluck('VRN');
 
         $driver_code = schedule::select('driver_code')
-        ->whereIn('car_id',$car_id)
-        ->where('trip_date', $DayOfWeek)->pluck('driver_code');
+            ->whereIn('car_id', $car_id)
+            ->where('trip_date', $DayOfWeek)
+            ->pluck('driver_code');
 
-        $driver_name = driver::select('driver_name')->
-        whereIn('driver_code',$driver_code)->pluck('driver_name');
+        $driver_name = driver::select('driver_name')
+            ->whereIn('driver_code', $driver_code)
+            ->pluck('driver_name');
         
         return ['car_id' => $car_id, 'VRN' => $VRN, 'car_status' => $car_status, 'driver_name' => $driver_name];
     }
