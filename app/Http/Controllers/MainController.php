@@ -12,18 +12,22 @@ class MainController extends BaseController
     public function MainController(){
 
         $clientController = new ClientController();
-        $clients = $clientController->get_client();
+        $clients = $clientController -> get_client();
 
         $carSelectController = new CarSelectController();
-        $selectedCar = $carSelectController->car_select();
+        $selectedCar = $carSelectController -> car_select();
 
         $tripController = new TripController();
-        $trip_list = $tripController->trip_select();
+        $trip_list = $tripController -> trip_select();
+
+        $mapController = new MapController();
+        $position_list = $mapController -> getPositions();
 
         return view('mybus', [
             'clients' => $clients, 
             'cars' => $selectedCar,
             'trips' => $trip_list,
+            'positions' => $position_list,
         ]);
     }
     //use AuthorizesRequests, ValidatesRequests;
