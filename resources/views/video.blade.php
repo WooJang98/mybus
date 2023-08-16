@@ -9,8 +9,7 @@
         @foreach($videos as $video)
             <li>
                 <video width="320" height="240" controls>
-                    <source src="{{ asset($video->video_path) }}" type="video/mp4">
-                    
+                    <source src="{{ asset($video->video_path) }}" type="video/mp4">   
                 </video>
                 <p>{{ $video->video_name }}</p>
             </li>
