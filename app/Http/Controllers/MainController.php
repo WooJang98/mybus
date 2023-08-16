@@ -6,30 +6,34 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
-class MainController extends BaseController
+class Controller extends BaseController
 
 {
-    public function MainController(){
+    public function default()
+            {
+            //$client = client::all();
+            $d = date('N'); 
+            $DayOfWeek = $d % 7 + 1; // 일요일이 1로 시작되는 요일
 
-        $clientController = new ClientController();
-        $clients = $clientController -> get_client();
+            // Fetch all car_status values from the 'car' table
+            $car_status = car::pluck('car_status');
 
-        $carSelectController = new CarSelectController();
-        $selectedCar = $carSelectController -> car_select();
+            // Fetch all VRN values from the 'car' table
+            $VRN = car::pluck('VRN');
 
-        $tripController = new TripController();
-        $trip_list = $tripController -> trip_select();
+            // Fetch driver_code values from the 'schedule' table where trip_date matches $DayOfWeek
+            $driver_code = schedule::where('trip_date', $DayOfWeek)
+                            ->pluck('driver_code');
 
-        $mapController = new MapController();
-        $position_list = $mapController -> getPositions();
+        // Fetch driver_name values from the 'driver' table where driver_code matches $driver_code
+            $driver_name = driver::whereIn('driver_code', $driver_code)
+                            ->pluck('driver_name');
 
-        return view('mybus', [
-            'clients' => $clients, 
-            'cars' => $selectedCar,
-            'trips' => $trip_list,
-            'positions' => $position_list,
-        ]);
-    }
+        // You can use $VRN, $car_status, $driver_code, and $driver_name as needed
+            
+        return view('tbox',
+        ['car_status'=>$car_status,'VRN'=>$VRN,'driver_name'=>$driver_name]);
+            }
     //use AuthorizesRequests, ValidatesRequests;
 }
 ?>
