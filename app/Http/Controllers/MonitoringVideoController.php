@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 use App\Models\monitoring_video;
 
-class MonitoringVideoController extends MainController
+class MonitoringVideoController
 {
     public function show_today_video()//ajax 일 때는 괄호안에 Request $request 추가하기
     {

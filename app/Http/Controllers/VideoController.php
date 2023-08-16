@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\video; // Video 모델을 사용하기 위해 필요한 부분
 
-class VideoController extends MainController
+class VideoController
 {
     public function show_video()
     {

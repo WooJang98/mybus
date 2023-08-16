@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\dtg;
 
-class MapController extends MainController
+class MapController
 {
     public function getPositions()
     {

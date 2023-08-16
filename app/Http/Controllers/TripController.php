@@ -6,26 +6,27 @@ use App\Models\car;
 use App\Models\driver;
 use App\Models\trip;
 
-class TripController extends MainController
+class TripController
 {
 
-    public function trip_select()
+    public function trip_select(Request $request)
     {
-        $start_date = "2022-11-01"; // 이 부분은 프론트에서 ajax로 변수 받아오기
-        $end_date = "2022-11-02"; // 이 부분은 프론트에서 ajax로 변수 받아오기
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $car_id = $request->input('car_id');
 
         $start_datetime = $start_date . ' 00:00:00';
         $end_datetime = $end_date . ' 23:59:59';
         
-        $trip = trip::where('car_id', 1) // 이 부분은 프론트에서 ajax로 변수 받아오기
+        $trip = trip::where('car_id', $car_id)
         ->whereBetween('departure_time', [$start_datetime, $end_datetime])
-        ->join('driver', 'trip.driver_code', '=', 'driver.driver_code') // 조인
+        ->join('driver', 'trip.driver_code', '=', 'driver.driver_code') 
         ->select('departure_time', 'arrival_time', 'driver.driver_name', 'dtg_status', 'driving_time', 'driving_distance', 'speed_max', 'speed_avg', 'rpm_max', 'rpm_avg', 'volt_min', 'volt_max', 'overspeed_time', 'accumulated_distance')
         ->get();
 
         $tripArray = json_decode(json_encode($trip), true);
 
-        return $tripArray;
+        return response()->json($tripArray);
     }
 }
 ?>
