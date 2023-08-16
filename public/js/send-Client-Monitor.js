@@ -1,20 +1,17 @@
-$(document).ready(function() {
-    
-    $("#search-form").submit(function(event) {
-        //모니터링 모드에서 고객사를 고르고 검색어를 입력해 제출할 때
-        event.preventDefault();
-        var formData = {
-            client: $(".client_m").val(), //BIN
-            vnum: $("#vnum").val(), // 검색어
+$(document).ready(function () {
+    $(".client_m").on("change", function () {
+        var clientData = {
+            client: $(this).val(),
+            vnum: "",
         };
-    
+
         $.ajax({
             type: "GET",
-            url: "/searchMonitor", 
-            data: formData, 
+            url: "/sendClientMonitor",
+            data: clientData,
             dataType: "json",
 
-            success: function(response) {
+            success: function (response) {
                 var carStatusArray = response.car_status;
                 var vrnArray = response.VRN;
                 var driverNameArray = response.driver_name;
@@ -34,14 +31,29 @@ $(document).ready(function() {
                 }
 
                 $("#monitor-table").html(tableContent);
-                console.log(response); 
+                console.log(response);
+                console.log(driverNameArray);
             },
-            error: function(error) {
+            error: function (error) {
                 console.error("오류 발생:", error);
-            }
+            },
         });
     });
 });
 
+// <?php
+                
+//                 foreach ($cars['car_id'] as $index=>$car_id) {
+                        
+//                     echo "<tr class='sendVrn-item'>";
+//                         echo"<td>" . ($cars['car_status'][$index] == true ? 'Good' : 'Bad') . "</td>";
+//                         echo"<td class='vrn-cell'>{$cars['VRN'][$index]}</td>";
+//                         echo"<td class='car_id-cell'>{$cars['driver_name'][$index]}</td>";
+//                     echo "</tr>";
+//                 }
 
+//                 ?>
 
+// 
+
+                

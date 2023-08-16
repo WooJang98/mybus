@@ -11,9 +11,9 @@ class TripController
 
     public function trip_select(Request $request)
     {
+        $car_id = $request->input('car_id');
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
-        $car_id = $request->input('car_id');
 
         $start_datetime = $start_date . ' 00:00:00';
         $end_datetime = $end_date . ' 23:59:59';

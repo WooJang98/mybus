@@ -13,11 +13,16 @@ class CarSelectController
         $client = $request->input('client');
         $vnum = $request->input('vnum');
 
+        if ($client=='default'){
+            $commonQuery = car::query()
+            ->Where('VRN', 'like', '%' . $vnum . '%');
+        } else{
+            $commonQuery = car::where('BIN', $client)
+            ->Where('VRN', 'like', '%' . $vnum . '%');
+        }
+
         $d = date('N'); 
         $DayOfWeek = $d % 7 + 1; // 일요일이 1로 시작되는 요일
-
-        $commonQuery = car::where('BIN', $client)
-                            ->Where('VRN', 'like', '%' . $vnum . '%');
 
         $car_id = $commonQuery->pluck('car_id');
         $car_status = $commonQuery->pluck('car_status');
