@@ -33,6 +33,7 @@ class CarSelectController
             ->pluck('driver_name');
         
             return response()->json([
+                'car_id' => $car_id,
                 'car_status' => $car_status,
                 'VRN' => $VRN,
                 'driver_name' => $driver_name,

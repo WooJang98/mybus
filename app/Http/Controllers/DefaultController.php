@@ -8,7 +8,7 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Models\client;
 use App\Models\car;
 use App\Models\schedule;
-use App\Models\driver;
+use App\Models\driver; 
 
 class DefaultController extends BaseController
 
@@ -38,6 +38,5 @@ class DefaultController extends BaseController
             
         return view('tbox', $cars = ['car_id' => $car_id,'car_status' => $car_status,'VRN' => $VRN,'driver_name' => $driver_name]);
         }
-    //use AuthorizesRequests, ValidatesRequests;
 }
 ?>

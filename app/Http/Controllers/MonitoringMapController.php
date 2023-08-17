@@ -2,15 +2,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\monitoring_map;
 use App\Models\dtg;
 
-class MapController
+class MonitoringMapController extends Controller
 {
-    public function getPositions()
+    public function getPositions(Request $request)
     {
-        $start_time = '2022-11-01 09:44:30.00';
+        $car_id = $request->input('car_id');
+        $d = date('N'); 
+        $DayOfWeek = $d % 7 + 1;
 
-        $carPositions = $this->getPositionData($start_time);
+        $departure_time = monitoring_map::where('car_id', $car_id)
+            ->where('trip_date', $DayOfWeek)
+            ->pluck('departure_time');
+
+        $carPositions = $this->getPositionData($departure_time);
 
         $formattedPositions = [];
 
@@ -20,10 +27,11 @@ class MapController
                 'position_y' => $position['position_y'] / 1000000,
             ];
         }
-        return $formattedPositions;
+        
+        return response()->json($formattedPositions);
     } 
 
-    public function getPositionData($start_time)
+    public function getPositionData($departure_time)
     {
         $items_per_Page = 1000;
         $page = 0;
@@ -36,7 +44,7 @@ class MapController
                 ->get();
     
             foreach ($dtg_list as $dtg) {
-                if ($dtg->departure_time == $start_time) {
+                if ($dtg->departure_time == $departure_time) {
                     $startDataFound = true; 
                     if ($dtg->position_x != 0) {
                         $carPositions[] = [
