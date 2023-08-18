@@ -20,7 +20,7 @@ class ReplayMapController
                 'position_y' => $position['position_y'] / 1000000,
             ];
         }
-        return response()->json($formattedPositions);
+        return response()->json(['formattedPositions' => $formattedPositions]);
     } 
 
 
