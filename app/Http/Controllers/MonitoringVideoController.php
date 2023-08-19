@@ -15,11 +15,11 @@ class MonitoringVideoController
         $car_id = $request->input('car_id'); 
 
         
-        $monitoring_videos = monitoring_video::where('car_id', '=', $car_id) 
-                   ->where('date', '=', $DayOfWeek) 
+        $monitoring_videos = monitoring_video::where('car_id',$car_id) 
+                   ->where('date', $DayOfWeek) 
                    ->get();
         
-        return response()->json($monitoring_videos);
+        return response()->json(['monitoring_videos' => $monitoring_videos]);
     }
 }
 ?>
