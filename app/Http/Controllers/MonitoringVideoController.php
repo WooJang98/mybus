@@ -17,7 +17,8 @@ class MonitoringVideoController
         $monitoring_videos = monitoring_video::where('car_id', $car_id) 
                    ->where('date', $DayOfWeek)
                    ->get();
-
+        
+        //return view('monitoringvideo',['monitoring_videos'=>$monitoring_videos]);  //로컬테스트용
         return response()->json($monitoring_videos);
     }
 }

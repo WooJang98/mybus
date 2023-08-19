@@ -15,10 +15,10 @@ class ReplayVideoController
         $car_id = $request->input('car_id');
         $departure_time = $request->input('departure_time'); 
 
-        $replay_videos = replay_video::where('car_id', '=', $car_id)
-                   ->where('departure_time', '=', $departure_time) 
+        $replay_videos = replay_video::where('car_id', $car_id ) 
+                   ->where('departure_time', $departure_time) 
                    ->get();
-        
+        //return view('replayvideo',['replay_videos'=>$replay_videos]);  //로컬테스트용   
         return response()->json($replay_videos);
     }
 }
