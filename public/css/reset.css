@@ -50,7 +50,7 @@ select {
 	border: 1px solid #999;
 	font-family: inherit;
 	background: url('../pictures/arrow.jpg') no-repeat 95% 50%;
-	border-radius: 10px;
+	border-radius: 4px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;

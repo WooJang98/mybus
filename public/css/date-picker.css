@@ -48,7 +48,7 @@ body {
 
   /* padding: 0; */
 
-  max-width: 475px;
+  max-width: 285px;
 
   margin: 0 auto;
 
@@ -89,7 +89,7 @@ body {
 
   border-collapse: collapse;
 
-  width: 270px;
+  width: 285px;
 
   height: 300px;
 
@@ -189,7 +189,7 @@ body {
 
 /* friday */
 
-.date-picker:nth-child(6) {
+.date-picker:nth-child(7) {
 
   color: green;
 

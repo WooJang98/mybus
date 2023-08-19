@@ -18,15 +18,17 @@ $(document).ready(function() {
                 var carStatusArray = response.car_status;
                 var vrnArray = response.VRN;
                 var driverNameArray = response.driver_name;
-                var tableContent = '';
+                var carIdArray = response.car_id;
+                var tableContent = "";
                 for (var index = 0; index < carStatusArray.length; index++) {
                     console.log(index);
                     var carStatus = carStatusArray[index] ? 'Good' : 'Bad';
                     var vrn = vrnArray[index];
                     var driverName = driverNameArray[index];
+                    var carId = carIdArray[index];
                     
         
-                    tableContent += "<tr class='sendVrn-item'>";
+                    tableContent += "<tr class='sendVrn-item' data-id=" + carId+ ">";
                     tableContent += "<td>" + carStatus + "</td>";
                     tableContent += "<td class='vrn-cell'>" + vrn + "</td>";
                     tableContent += "<td class='car_id-cell'>" + driverName + "</td>";

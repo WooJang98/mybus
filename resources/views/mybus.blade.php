@@ -18,6 +18,9 @@
 
 <body>
 
+
+
+
     <div class="header">
         <img src="{{ asset('pictures/MYBUS.png') }}" width="114" height="21" style="top: 20px; left:22px;    position: absolute;">
     </div>
@@ -38,10 +41,10 @@
                     <div id="select-client">
                         <select name="client" class="client_m">
                             <?php
-                            echo "<option value='default' selected class='client-item'>";
+                            echo "<option value='default' class='client-item'>";
                             echo "고객사 전체";
                             echo "</option>";
-                            
+
                             foreach ($clients as $client) {
                                 echo "<option value=$client->BIN class='client-item'>";
                                 echo $client->client_name;
@@ -54,7 +57,9 @@
                     <div id="search-carNum">
 
                         <label for="vnum"></label>
+                        <!-- <label for="vnum"></label> 없어도 되지 않을까? -->
                         <input type="text" name="vnum" id="vnum" class="vnum" placeholder="차량번호를 입력하세요">
+                        <!-- <button type="submit" id="search-button">검색</button> -->
                     </div>
                 </form>
                 <div id="print"></div>
@@ -72,12 +77,12 @@
                     <tbody id="monitor-table">
                         <?php
 
-                        foreach ($cars['car_id'] as $index=>$car_id) {
-                        
-                            echo "<tr class='sendVrn-item'>";
-                                echo"<td>" . ($cars['car_status'][$index] == true ? 'Good' : 'Bad') . "</td>";
-                                echo"<td class='vrn-cell'>{$cars['VRN'][$index]}</td>";
-                                echo"<td class='car_id-cell'>{$cars['driver_name'][$index]}</td>";
+                        foreach ($cars['car_id'] as $index => $car_id) {
+
+                            echo "<tr class='sendVrn-item' data-id=$car_id>";
+                            echo "<td>" . ($cars['car_status'][$index] == true ? 'Good' : 'Bad') . "</td>";
+                            echo "<td class='vrn-cell'>{$cars['VRN'][$index]}</td>";
+                            echo "<td class='car_id-cell'>{$cars['driver_name'][$index]}</td>";
                             echo "</tr>";
                         }
                         ?>
@@ -103,7 +108,8 @@
                         <span class="video-head-text">"충남 123가1234"</span>
                     </div>
                     <video controls width="455px" height="268px">
-                        <source src="" type="video/mp4">
+                        <source src="videos/indoor_lower.mp4" type="video/mp4">
+
                     </video>
                 </div>
 
@@ -145,6 +151,7 @@
 
 
         </div>
+        <!-- </div> -->
     </div>
 
     <div id="Replay" class="tabcontent">
@@ -153,7 +160,7 @@
             <div id="select-client">
                 <select name="client" class="client_r">
                     <?php
-                    echo "<option value=default selected>";
+                    echo "<option value=default>";
                     echo "고객사 전체";
                     echo "</option>";
                     foreach ($clients as $client) {
@@ -164,13 +171,26 @@
                 </select>
             </div>
             <div>
-                <select name="vnum" class="vnum">
-                    <option value="" disabled selected>차량번호 선택</option>
-                    <option value="충남 123가1234">충남 123가1234</option>
-                    <option value="전남 123가1234">전남 123가1234</option>
-                    <option value="경남 123가1234">경남 123가1234</option>
-                    <option value="정남 123진1234">정남 123진1234</option>
-                    <option value="화남 123극1234">화남 123극1234</option>
+
+
+
+                <select name="vnum" class="vnum" id="replay-select">
+                    <!-- <option value="" disabled >차량번호 선택</option> -->
+                    <?php
+                    echo "<option value=default>";
+                    echo "차량번호 선택";
+                    echo "</option>";
+                    foreach ($cars['car_id'] as $index => $car_id) {
+                        echo "<option value='{$cars['VRN'][$index]}' data-id='$car_id'>";
+                        echo $cars['VRN'][$index];
+                        echo "</option>";
+                    }
+                    ?>
+                    <!-- // <option value="충남 123가1234">충남 123가1234</option>
+                    // <option value="전남 123가1234">전남 123가1234</option>
+                    // <option value="경남 123가1234">경남 123가1234</option>
+                    // <option value="정남 123진1234">정남 123진1234</option>
+                    // <option value="화남 123극1234">화남 123극1234</option> -->
                 </select>
             </div>
 
@@ -223,62 +243,6 @@
                         <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
                         <span class="video-head-text">"충남 123가1234"</span>
                     </div>
-                    <video controls width="303px" height="161px">
-                        <source src="" type="video/mp4">
-                    </video>
-                </div>
-
-                <div class="video-grid-item-replay">
-                    <div class="video-head-replay">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
-                    </div>
-                    <video controls loop width="303px" height="161px">
-                        <source src="">
-                        <!-- <source src="" type="video/mp4"> -->
-                    </video>
-                </div>
-
-                <div class="video-grid-item-replay">
-                    <div class="video-head-replay">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
-                    </div>
-                    <video controls loop width="303px" height="161px">
-                    </video>
-                </div>
-
-                <div class="video-grid-item-replay">
-                    <div class="video-head-replay">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
-                    </div>
-                    <video controls loop width="303px" height="161px"></video>
-                </div>
-
-                <div class="video-grid-item-replay">
-                    <div class="video-head-replay">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
-                    </div>
-                    <video controls loop width="303px" height="161px"></video>
-                </div>
-
-                <div class="video-grid-item-replay">
-                    <div class="video-head-replay">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
-                    </div>
                     <video controls loop width="303px" height="161px"></video>
                 </div>
 
@@ -313,7 +277,7 @@
                 </div>
 
             </div>
-            <div class="map" id="map-replay" style="width:685px;height:635px;"></div>
+            <div class="map" id="map-replay"></div>
 
         </div>
     </div>
@@ -325,9 +289,9 @@
                     트립조회
                 </span>
 
-                <input type="date" name="fromdate" required="required">
+                <input type="date" name="fromdate" required="required" value="2022-11-01">
 
-                <input type="date" name="todate" required="required">
+                <input type="date" name="todate" required="required" value="2022-11-03">
 
                 <input type="image" src="pictures/download.png" alt="Submit" height="25">
 
@@ -344,7 +308,7 @@
                             <th>도착일시</th>
                             <th>운전자명</th>
                             <th>DTG상태</th>
-                            <th>운행시간(분)</th>
+                            <th>운행시간</th>
                             <th>운행거리(km)</th>
                             <th>최고속도(km/h)</th>
                             <th>평균속도(km/h)</th>
@@ -356,135 +320,8 @@
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>12</td>
-                            <td>13</td>
-                            <td>14</td>
-                        </tr>
+                    <tbody id="trip-table">
+                        <!-- 동적으로 생성 : updateTripTable.js -->
                     </tbody>
 
                     <tfoot>
@@ -496,18 +333,25 @@
         </div>
     </div>
     <script src="https://kit.fontawesome.com/c52defce05.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec1a28f6c3b248103110e5b04b708ee1">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d961b58678108671a35ad16d20299e8f&libraries=clusterer">
     </script>
 
-    <script src="{{ asset('js/search-Monitor.js') }}"></script>
-    <script src="{{ asset('js/openTab.js') }}"></script>
-    <script src="{{ asset('js/kakaoMap.js') }}"></script>
     <script src="{{ asset('js/date-picker.js') }}"></script>
-    <script src="{{ asset('js/send-VRN.js') }}"></script>
+    <script src="{{ asset('js/kakaoMap.js') }}"></script>
+    <script src="{{ asset('js/openTab.js') }}"></script>
+    <script src="{{ asset('js/search-Monitor.js') }}"></script>
+    <script src="{{ asset('js/search-Replay.js') }}"></script>
+    <script src="{{ asset('js/select-option.js') }}"></script>
+    <script src="{{ asset('js/send-carId-Map-Monitor.js') }}"></script>
+    <script src="{{ asset('js/send-carId-Map-TripTable.js') }}"></script>
+    <script src="{{ asset('js/send-carId-Video-Monitor.js') }}"></script>
+    <script src="{{ asset('js/send-carId-Video-TripTable.js') }}"></script>
+    <script src="{{ asset('js/send-carId.js') }}"></script>
     <script src="{{ asset('js/send-Client-Monitor.js') }}"></script>
     <script src="{{ asset('js/send-Client-Replay.js') }}"></script>
     <script src="{{ asset('js/send-TripDate.js') }}"></script>
-    <script src="{{ asset('js/search-Replay.js') }}"></script>
+    <script src="{{ asset('js/updatePolyLine.js') }}"></script>
+    <script src="{{ asset('js/updateTripTable.js') }}"></script>
 
 
 </body>
