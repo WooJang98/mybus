@@ -9,9 +9,6 @@ class ReplayVideoController
 {
     public function show_trip_video(Request $request)
     {
-        $d = date('N'); 
-        $DayOfWeek = $d % 7 + 1; // 일요일이 1로 시작되는 요일
-
         $car_id = $request->input('car_id');
         $departure_time = $request->input('departure_time'); 
 
