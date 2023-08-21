@@ -26,3 +26,4 @@ $("#monitor-table").on("click", ".sendVrn-item", function () {
         },
     });
 });
+

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\client;
 
-class ClientController
+class ClientController 
 {
     public function get_client()
     {

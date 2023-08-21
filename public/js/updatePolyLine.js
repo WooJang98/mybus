@@ -1,11 +1,31 @@
 function updatePolyline(response, target) {
     var formattedCoords = response.formattedPositions;
-
+    
     var linePath = [];
+    
+    var markers = [];
+    
+    var markerImage = new kakao.maps.MarkerImage(
+        'pictures/pngegg.png', // 아이콘 이미지 경로
+        new kakao.maps.Size(9, 9), // 아이콘 크기
+        // { offset: new kakao.maps.Point(37, 126.304225) } // 아이콘 중심 위치?????????/
+    );
+    
     formattedCoords.forEach((element) => {
         var lat = element.position_y;
+        console.log(lat);
         var lng = element.position_x;
         linePath.push(new kakao.maps.LatLng(lat, lng));
+        var markerItem = new kakao.maps.Marker({
+            map: target,
+            position: new kakao.maps.LatLng(lat, lng),
+            image: markerImage,
+            draggable: false,
+            clickable: false,
+            opacity: 0.7,
+        });
+        markers.push(markerItem);
+
     });
 
     var polyline = new kakao.maps.Polyline({
@@ -21,23 +41,36 @@ function updatePolyline(response, target) {
     var startLat = formattedCoords[0].position_y;
     var startLng = formattedCoords[0].position_x;
     target.setCenter(new kakao.maps.LatLng(startLat, startLng));
+
+    ////////////////////////MAKE MARKER////////////////////////////
+    
+
+    // var marker = new kakao.maps.Marker({
+    //     map: target,
+    //     position: new kakao.maps.LatLng(36.747839, 126.304225),
+    //     image: markerImage,
+    //     draggable: false,
+    //     clickable: false,
+    //     opacity: 0.7,
+    // });
+    var clusterer = new kakao.maps.MarkerClusterer({
+        map: target,
+        markers: markers,
+        gridSize: 70,
+        averageCenter: false,
+        minLevel: 6,
+        disableClickZoom: true,
+        styles: [{
+            width : '53px', height : '52px',
+            background: 'url(cluster.png) no-repeat',
+            color: '#fff',
+            textAlign: 'center',
+            lineHeight: '54px'
+        }]
+    });
+    
+
+
 }
 
-// var markers = [];
-
-// var marker = new kakao.maps.Marker({
-//     map: map,
-//     position: new kakao.maps.LatLng(33.450701, 126.570667),
-//     image: markerImage,
-//     draggable: false,
-//     clickable: false,
-//     opacity: 0.7,
-// });
-
-
-// var markerImage = new kakao.maps.MarkerImage(
-//     'app/public/pictures/pngegg.png', // 아이콘 이미지 경로
-//     new kakao.maps.Size(24, 24), // 아이콘 크기
-//     { offset: new kakao.maps.Point(12, 12) } // 아이콘 중심 위치?????????/
-// );
 

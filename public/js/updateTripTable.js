@@ -1,6 +1,5 @@
 function updateTripTable(response) {
     var tableContent = "";
-
     for (var index = 0; index < response.length; index++) {
         
         var car_id = response[index].car_id;
@@ -18,7 +17,7 @@ function updateTripTable(response) {
         var voltMin = response[index].volt_min;
         var overspeedTime = response[index].overspeed_time;
         var accumulatedDistance = response[index].accumulated_distance;
-        if (overspeedTime >= 15) {
+        if (overspeedTime >= 12) {
             tableContent += "<tr class='red-table ";
         } else {
             tableContent += "<tr class='";

@@ -4,8 +4,7 @@ $("#trip-table").on("click", "tr", function () {
 
     var car_id = $(this).data("id");
     var departure_time = $(this).find("#departure-time").text();
-
-    console.log(car_id, departure_time);
+    
     var trData = {
         car_id: car_id,
         departure_time: departure_time,
@@ -22,7 +21,7 @@ $("#trip-table").on("click", "tr", function () {
         data: trData,
         dataType: "json",
         success: function (response) {
-            console.log("this is triptable response", response);
+            // console.log("this is triptable response", response);
             updatePolyline(response, map_replay);
 
         },

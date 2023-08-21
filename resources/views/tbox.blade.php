@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TabBox</title>
+    <title>MYBUS</title>
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/header.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/tab.css') }}" rel="stylesheet" />
@@ -56,10 +56,11 @@
 
                     <div id="search-carNum">
 
-                        <label for="vnum"></label>
-                        <!-- <label for="vnum"></label> 없어도 되지 않을까? -->
-                        <input type="text" name="vnum" id="vnum" class="vnum" placeholder="차량번호를 입력하세요">
-                        <!-- <button type="submit" id="search-button">검색</button> -->
+                        <label for="vnum" class="label-with-button">
+                            <!-- <label for="vnum"></label> 없어도 되지 않을까? -->
+                            <input type="text" name="vnum" id="vnum" class="vnum" placeholder="차량번호를 입력하세요">
+                            <button type="submit" id="search-button"></button>
+                        </label>
                     </div>
                 </form>
                 <div id="print"></div>
@@ -80,7 +81,7 @@
                         foreach ($cars['car_id'] as $index => $car_id) {
 
                             echo "<tr class='sendVrn-item' data-id=$car_id>";
-                            echo "<td>" . ($cars['car_status'][$index] == true ? 'Good' : 'Bad') . "</td>";
+                            echo "<td>" . ($cars['car_status'][$index] == true ? "<img src='pictures/good.png' class='bus-size'>" : "<img src='bad-image.png' alt='Bad'>") . "</td>";
                             echo "<td class='vrn-cell'>{$cars['VRN'][$index]}</td>";
                             echo "<td class='car_id-cell'>{$cars['driver_name'][$index]}</td>";
                             echo "</tr>";
@@ -93,8 +94,6 @@
                 </table>
             </div>
 
-            <div class="emptysearch"></div>
-
         </div>
 
         <div class="container-video-map">
@@ -102,47 +101,34 @@
 
                 <div class="video-grid-item-monitor">
                     <div class="video-head-monitor">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
-                    </div>
-                    <video controls width="455px" height="268px">
-                        <source src="videos/indoor_lower.mp4" type="video/mp4">
 
-                    </video>
+                        <span class="video-head-text"></span>
+                    </div>
+                    <video autoplay controls loop muted width="455px" height="300px"></video>
                 </div>
 
                 <div class="video-grid-item-monitor">
                     <div class="video-head-monitor">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
+
+                        <span class="video-head-text"></span>
                     </div>
-                    <video controls width="455px" height="268px">
-                        <source src="../public/pictu" type="video/mp4">
-                    </video>
+                    <video autoplay controls loop muted width="455px" height="300px"></video>
                 </div>
 
                 <div class="video-grid-item-monitor">
                     <div class="video-head-monitor">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
+
+                        <span class="video-head-text"></span>
                     </div>
-                    <video autoplay controls loop muted width="455px" height="268px"></video>
+                    <video autoplay controls loop muted width="455px" height="300px"></video>
                 </div>
 
                 <div class="video-grid-item-monitor">
                     <div class="video-head-monitor">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
+
+                        <span class="video-head-text"></span>
                     </div>
-                    <video autoplay controls loop muted width="455px" height="268px"></video>
+                    <video autoplay controls loop muted width="455px" height="300px"></video>
                 </div>
 
             </div>
@@ -158,7 +144,7 @@
         <form action="" method="get" class="replay-mode">
 
             <div id="select-client">
-                <select name="client" class="client_r">
+                <select name="client" class="client_r re-client">
                     <?php
                     echo "<option value=default>";
                     echo "고객사 전체";
@@ -174,7 +160,7 @@
 
 
 
-                <select name="vnum" class="vnum" id="replay-select">
+                <select name="vnum" class="vnum re-client2" id="replay-select">
                     <!-- <option value="" disabled >차량번호 선택</option> -->
                     <?php
                     echo "<option value=default>";
@@ -238,42 +224,34 @@
 
                 <div class="video-grid-item-replay">
                     <div class="video-head-replay">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
+
+                        <span class="video-head-text"></span>
                     </div>
-                    <video controls loop width="303px" height="161px"></video>
+                    <video autoplay controls loop muted width="455px" height="300px"></video>
                 </div>
 
                 <div class="video-grid-item-replay">
                     <div class="video-head-replay">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
+
+                        <span class="video-head-text"></span>
                     </div>
-                    <video controls loop width="303px" height="161px"></video>
+                    <video autoplay controls loop muted width="455px" height="300px"></video>
                 </div>
 
                 <div class="video-grid-item-replay">
                     <div class="video-head-replay">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
+
+                        <span class="video-head-text"></span>
                     </div>
-                    <video controls loop width="303px" height="161px"></video>
+                    <video autoplay controls loop muted width="455px" height="300px"></video>
                 </div>
 
                 <div class="video-grid-item-replay">
                     <div class="video-head-replay">
-                        <i class="fa-regular fa-circle-play" style="color: #ffffff;"></i>
-                        <i class="fa-regular fa-circle-stop" style="color: #ffffff;"></i>
-                        <i class="fa-solid fa-camera" style="color: #ffffff;"></i>
-                        <span class="video-head-text">"충남 123가1234"</span>
+
+                        <span class="video-head-text"></span>
                     </div>
-                    <video controls loop width="303px" height="161px"></video>
+                    <video autoplay controls loop muted width="455px" height="300px"></video>
                 </div>
 
             </div>
@@ -293,12 +271,12 @@
 
                 <input type="date" name="todate" required="required" value="2022-11-03">
 
-                <input type="image" src="pictures/download.png" alt="Submit" height="25">
+                <input type="image" class="trip-download" src="pictures/download.png" alt="Submit">
 
                 <div class="emptytrip"></div>
             </form>
 
-            <div class="line546"></div>
+            <div class="line545"></div>
             <div class="group5827">
                 <table>
                     <thead class="box2429">
@@ -319,32 +297,33 @@
                             <th>누적주행거리</th>
                         </tr>
                     </thead>
-
+                    
                     <tbody id="trip-table">
                         <!-- 동적으로 생성 : updateTripTable.js -->
                     </tbody>
-
+                    
                     <tfoot>
-
-                    </tfoot>
-                </table>
+                        
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="line545"></div>
+                
             </div>
-
         </div>
-    </div>
-    <script src="https://kit.fontawesome.com/c52defce05.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d961b58678108671a35ad16d20299e8f&libraries=clusterer">
-    </script>
+        <script src="https://kit.fontawesome.com/c52defce05.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d961b58678108671a35ad16d20299e8f&libraries=clusterer">
+            </script>
 
-    <script src="{{ asset('js/date-picker.js') }}"></script>
-    <script src="{{ asset('js/kakaoMap.js') }}"></script>
-    <script src="{{ asset('js/openTab.js') }}"></script>
-    <script src="{{ asset('js/search-Monitor.js') }}"></script>
-    <script src="{{ asset('js/search-Replay.js') }}"></script>
-    <script src="{{ asset('js/select-option.js') }}"></script>
-    <script src="{{ asset('js/send-carId-Map-Monitor.js') }}"></script>
-    <script src="{{ asset('js/send-carId-Map-TripTable.js') }}"></script>
-    <script src="{{ asset('js/send-carId-Video-Monitor.js') }}"></script>
+<script src="{{ asset('js/date-picker.js') }}"></script>
+<script src="{{ asset('js/kakaoMap.js') }}"></script>
+<script src="{{ asset('js/openTab.js') }}"></script>
+<script src="{{ asset('js/search-Monitor.js') }}"></script>
+<script src="{{ asset('js/search-Replay.js') }}"></script>
+<script src="{{ asset('js/select-option.js') }}"></script>
+<script src="{{ asset('js/send-carId-Map-Monitor.js') }}"></script>
+<script src="{{ asset('js/send-carId-Map-TripTable.js') }}"></script>
+<script src="{{ asset('js/send-carId-Video-Monitor.js') }}"></script>
     <script src="{{ asset('js/send-carId-Video-TripTable.js') }}"></script>
     <script src="{{ asset('js/send-carId.js') }}"></script>
     <script src="{{ asset('js/send-Client-Monitor.js') }}"></script>

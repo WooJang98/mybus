@@ -9,6 +9,7 @@ class ReplayVideoController
 {
     public function show_trip_video(Request $request)
     {
+
         $car_id = $request->input('car_id');
         $departure_time = $request->input('departure_time'); 
 
