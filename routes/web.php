@@ -1,27 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\DefaultController;
-use App\Http\Controllers\SendIdController;
 use App\Http\Controllers\CarSelectController;
-use App\Http\Controllers\TripController;
-use App\Http\Controllers\MapController;
-use App\Http\Controllers\ReplayVideoController;
+use App\Http\Controllers\SendIdController;
 use App\Http\Controllers\MonitoringVideoController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\MonitoringMapController;
+use App\Http\Controllers\ReplayMapController;
+use App\Http\Controllers\ReplayVideoController;
+use App\Http\Controllers\TripController;
+
 
 //route에 사용된 URI의 이름과 js파일의 이름이 유사하므로 참고.
-
 
 Route::get('/', [DefaultController::class, 'default']);
 //최초 페이지가 로드될 때 
@@ -32,7 +22,7 @@ Route::get('/sendClientMonitor', [CarSelectController::class, 'car_select']);
 Route::get('/searchMonitor', [CarSelectController::class, 'car_select']);
 //모니터링 모드에서 고객사를 고르고 검색어를 입력해 폼을 제출할 때
 
-Route::get('/sendCarIdtoMapfromMonitor', [MapController::class, 'Monitoring_getPositions']);
+Route::get('/sendCarIdtoMapfromMonitor', [MonitoringMapController::class, 'getPositions']);
 //모니터링 모드에서 <tr>을 골라 [카카오 지도]로 carId를 전송
 
 Route::get('/sendCarIdtoVideofromMonitor', [MonitoringVideoController::class, 'show_today_video']);
@@ -58,15 +48,15 @@ Route::get('/searchReplay', [TripController::class, 'trip_select']);
 Route::get('/sendCarIdVideofromTrip', [ReplayVideoController::class, 'show_trip_video']);
 //트립조회에서 <tr>을 골라 video로 car_id, departure_time을 전달
 
-Route::get('/sendCarIdMapfromTrip', [MapController::class, 'Replay_getPositions']);
+Route::get('/sendCarIdMapfromTrip', [ReplayMapController::class, 'getPositions']);
 //트립조회에서 <tr>을 골라 map으로 car_id, departure_time을 전달
 
-
-//test
-// Route::get('/sendCarIdMapfromTrip', [SendClientController::class, 'search']);
-// //트립조회에서 <tr>을 골라 map으로 car_id, departure_time을 전달
 
 Route::get('/set', function () {
     return view('setting');
 });//php.info()
 // Route::get('/client', [dbControl::class, 'getUsers']);
+
+//test
+// Route::get('/sendCarIdMapfromTrip', [SendClientController::class, 'search']);
+// //트립조회에서 <tr>을 골라 map으로 car_id, departure_time을 전달

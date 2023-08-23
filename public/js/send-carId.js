@@ -23,7 +23,6 @@ $("#monitor-table").on("click", ".sendVrn-item", function () {
             dataType: "json",
             success: function (response) {
                 console.log(response);
-
             },
             error: function (error) {
                 console.error("오류 발생:", error);

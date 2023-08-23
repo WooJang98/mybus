@@ -172,11 +172,6 @@
                         echo "</option>";
                     }
                     ?>
-                    <!-- // <option value="충남 123가1234">충남 123가1234</option>
-                    // <option value="전남 123가1234">전남 123가1234</option>
-                    // <option value="경남 123가1234">경남 123가1234</option>
-                    // <option value="정남 123진1234">정남 123진1234</option>
-                    // <option value="화남 123극1234">화남 123극1234</option> -->
                 </select>
             </div>
 
@@ -271,7 +266,7 @@
 
                 <input type="date" name="todate" required="required" value="2022-11-03">
 
-                <input type="image" class="trip-download" src="pictures/download.png" alt="Submit">
+                <input type="image" class="trip-download" src="pictures/glass.png" alt="Submit">
 
                 <div class="emptytrip"></div>
             </form>

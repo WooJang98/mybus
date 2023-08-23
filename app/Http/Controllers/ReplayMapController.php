@@ -13,16 +13,7 @@ class ReplayMapController
         
         $carPositions = $this->getPositionData($car_id, $departure_time);
 
-        $formattedPositions = [];
-
-        foreach ($carPositions as $position) {
-            $formattedPositions[] = [
-                'position_x' => $position['position_x'] / 1000000,
-                'position_y' => $position['position_y'] / 1000000,
-            ];
-        }
-        
-        return response()->json(['formattedPositions' => $formattedPositions]);
+        return response()->json(['formattedPositions' => $carPositions]);
     } 
 
     public function getPositionData($car_id, $departure_time)
@@ -43,8 +34,8 @@ class ReplayMapController
                     $startDataFound = true; 
                     if ($dtg->position_x != 0) {
                         $carPositions[] = [
-                            'position_x' => $dtg->position_x,
-                            'position_y' => $dtg->position_y,
+                            'position_x' => $dtg->position_x/1000000,
+                            'position_y' => $dtg->position_y/1000000,
                         ];
                     }
                 } elseif ($startDataFound) {

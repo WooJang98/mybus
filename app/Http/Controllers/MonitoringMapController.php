@@ -14,27 +14,17 @@ class MonitoringMapController extends Controller
     $d = date('N'); 
     $DayOfWeek = $d % 7 + 1;
     
-    $latest_departure_time = monitoring_map::where('car_id', $car_id)
+    $departure_time = monitoring_map::where('car_id', $car_id)
         ->where('trip_date', $DayOfWeek)
-        ->latest('departure_time')
         ->value('departure_time');
 
-    $carPositions = $this->getPositionData($latest_departure_time);
+    $departure_time .= '.00';
 
-    $formattedPositions = [];
+    $carPositions = $this->getPositionData($departure_time);
 
-    foreach ($carPositions as $position) {
-        $formattedPositions[] = [
-            'position_x' => $position['position_x'] / 1000000,
-            'position_y' => $position['position_y'] / 1000000,
-        ];
-    }
-
-    return response()->json(['formattedPositions' => $formattedPositions]);
+    return response()->json(['formattedPositions' => $carPositions]);
 }
     
-
-
     public function getPositionData($departure_time)
     {
         $items_per_Page = 1000;
@@ -52,8 +42,8 @@ class MonitoringMapController extends Controller
                     $startDataFound = true; 
                     if ($dtg->position_x != 0) {
                         $carPositions[] = [
-                            'position_x' => $dtg->position_x,
-                            'position_y' => $dtg->position_y,
+                            'position_x' => $dtg->position_x/1000000,
+                            'position_y' => $dtg->position_y/1000000,
                         ];
                     }
                 } elseif ($startDataFound) {

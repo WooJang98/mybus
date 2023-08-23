@@ -134,6 +134,8 @@
     height: 47px;
     margin-top: 10px;
     text-align: left;
+    border: 1px solid #d7dbec;
+
 }
 
 .box2426 {
@@ -192,6 +194,7 @@ input[type="submit"] {
     -moz-appearance: none;
     appearance: none;
     color: white;
+    cursor: pointer;
 }
 
 .emptysearch {

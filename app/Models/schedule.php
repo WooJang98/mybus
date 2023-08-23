@@ -13,3 +13,4 @@ class schedule extends Model
     protected $table = 'schedule';
    // protected $primaryKey = 'BIN'; // 기본 키 컬럼 이름
 }
+

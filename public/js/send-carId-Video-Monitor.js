@@ -18,12 +18,10 @@ $("#monitor-table").on("click", ".sendVrn-item", function () {
         dataType: "json",
         success: function (response) {
             //테스트는 차 1번을 고르세요
-
             console.log("video-monitor-test");
             var videoPath = response[0];
             console.log(videoPath);
             console.log(vnum);
-
 
             //반복문 사용
             // let arrPath = Object.keys(videoPath).map(item => videoPath[item]);
@@ -50,10 +48,6 @@ $("#monitor-table").on("click", ".sendVrn-item", function () {
             right_top_span.text(vnum);
             left_bottom_span.text(vnum);
             right_bottom_span.text(vnum);
-
-
-
-
 
             var left_top_video = $(
                 `#Monitor > div.container-video-map > div.video-grid-container-monitor > div:nth-child(${1}) > video`

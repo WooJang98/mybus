@@ -19,7 +19,7 @@ $(document).ready(function () {
                 var tableContent = '';
                 for (var index = 0; index < carStatusArray.length; index++) {
                     console.log(index);
-                    var carStatus = carStatusArray[index] ? 'Good' : 'Bad';
+                    var carStatus = carStatusArray[index] ? "<img src='pictures/good.png' class='bus-size'>" : "<img src='bad-image.png' alt='Bad'>";
                     var vrn = vrnArray[index];
                     var driverName = driverNameArray[index];
                     var carId = carIdArray[index];
@@ -43,19 +43,3 @@ $(document).ready(function () {
     });
 });
 
-// <?php
-                
-//                 foreach ($cars['car_id'] as $index=>$car_id) {
-                        
-//                     echo "<tr class='sendVrn-item'>";
-//                         echo"<td>" . ($cars['car_status'][$index] == true ? 'Good' : 'Bad') . "</td>";
-//                         echo"<td class='vrn-cell'>{$cars['VRN'][$index]}</td>";
-//                         echo"<td class='car_id-cell'>{$cars['driver_name'][$index]}</td>";
-//                     echo "</tr>";
-//                 }
-
-//                 ?>
-
-// 
-
-                
